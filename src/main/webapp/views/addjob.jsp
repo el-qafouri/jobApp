@@ -1,3 +1,4 @@
+<%@ page import="com.spring.jobApp.model.JobPost" %>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
 <%@ page contentType="text/html;charset=UTF-8" language="java"%>
 <%--<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>--%>
@@ -60,6 +61,8 @@
                 <div class="card-body">
                     <h2 class="mb-3 text-center fs-3 font-weight-bold">Post a new
                         Job</h2>
+                    @variable id="JobPost" type="com.spring.jobApp.model.JobPost"
+<%--                    @elvariable id="JobPost" type="com.spring.jobApp.model.JobPost"--%>
                     <form:form action="handleForm" method="post" modelAttribute="jobPost">
                         <div class="mb-1">
                             <label for="postId" class="form-label">Post ID</label> <input
@@ -210,6 +213,7 @@
 
                             </select>
                         </div>
+
 
                         <button type="submit" class="btn btn-primary">Submit</button>
                     </form:form>

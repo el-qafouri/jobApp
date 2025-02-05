@@ -1,7 +1,9 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ page import="com.spring.jobApp.model.JobPost" %>
-<%--<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>--%>
+<%--<%@ taglib uri="http://xmlns.jcp.org/jsp/jstl/core" prefix="c" %>--%>
+
 <%@page isELIgnored="false" %>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -49,6 +51,8 @@
     </div>
 </nav>
 
+<% JobPost jobPost = (JobPost) request.getAttribute("JobPost"); %>
+
 <div class="container mt-5">
     <h2 class="mb-4 text-center font-weight-bold">Job Post Details</h2>
 
@@ -56,24 +60,26 @@
         <div class="col-md-6">
             <div class="card border-dark bg-dark text-white">
                 <div class="card-body">
-                    <h5 class="card-title">${jobPost.postProfile}</h5>
+<%--                    <h5 class="card-title">${jobPost.postProfile}</h5>--%>
+                    <h5 class="card-title"> <%= jobPost.getPostProfile() %> </h5>
                     <p class="card-text">
                         <strong>Job-Id:</strong>
-                        ${jobPost.postId}
+                       <%= jobPost.getPostId() %>
                     </p>
                     <p class="card-text">
                         <strong>Description:</strong>
-                        ${jobPost.postDesc}
+                        <%= jobPost.getPostDesc() %>
                     </p>
                     <p class="card-text">
                         <strong>Experience Required:</strong>
-                        ${jobPost.reqExperience} years
+                        <%= jobPost.getReqExperience() %> years
                     </p>
                     <p class="card-text">
                         <strong>Tech Stack Required:</strong>
                     <ul>
-                        <c:forEach var="tech" items="${jobPost.postTechStack}">
-                            <li>${tech}</li>
+                        <c:forEach var="tech" items= "<%= jobPost.getPostTechStack() %>" >
+<%--                            <li>${tech}</li>--%>
+                            <li><%= jobPost.getPostTechStack() %></li>
                         </c:forEach>
                     </ul>
                     </p>
