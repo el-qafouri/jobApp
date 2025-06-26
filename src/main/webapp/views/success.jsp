@@ -51,7 +51,7 @@
     </div>
 </nav>
 
-<% JobPost jobPost = (JobPost) request.getAttribute("JobPost"); %>
+<% JobPost jobPost = (JobPost) request.getAttribute("jobPost"); %>
 
 <div class="container mt-5">
     <h2 class="mb-4 text-center font-weight-bold">Job Post Details</h2>
@@ -76,12 +76,11 @@
                     </p>
                     <p class="card-text">
                         <strong>Tech Stack Required:</strong>
-                    <ul>
-                        <c:forEach var="tech" items= "<%= jobPost.getPostTechStack() %>" >
-<%--                            <li>${tech}</li>--%>
-                            <li><%= jobPost.getPostTechStack() %></li>
-                        </c:forEach>
-                    </ul>
+                        <ul>
+                            <% for (String tech : jobPost.getPostTechStack()) { %>
+                                <li><%= tech %></li>
+                            <% } %>
+                        </ul>
                     </p>
                 </div>
                 <div class="card-footer">
